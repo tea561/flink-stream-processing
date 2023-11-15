@@ -1,11 +1,16 @@
-package bigdata.pojo;
+package bigdata.pojo.cassandra;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.Table;
 
-@Table(keyspace = "bigdata", name = "edgeemission")
-public class EdgeEmissionValues {
-    @Column(name = "edgeId")
-    public String EdgeId;
+import java.util.Date;
+
+@Table(keyspace = "bigdata", name = "lane_emissions")
+public class LaneEmissions {
+
+    @Column(name = "date")
+    public Date Date;
+    @Column(name = "laneId")
+    public String LaneId;
     @Column(name = "laneCO")
 
     public Float LaneCO;
@@ -22,21 +27,23 @@ public class EdgeEmissionValues {
 
     public Float LanePMx;
 
-    public EdgeEmissionValues(String edgeId, Float laneCO, Float laneCO2, Float laneHC, Float laneNOx, Float lanePMx) {
-        EdgeId = edgeId;
+
+    public LaneEmissions(String laneId, Float laneCO, Float laneCO2, Float laneHC, Float laneNOx, Float lanePMx) {
+        LaneId = laneId;
         LaneCO = laneCO;
         LaneCO2 = laneCO2;
         LaneHC = laneHC;
         LaneNOx = laneNOx;
         LanePMx = lanePMx;
+        Date = new Date();
     }
 
-    public String getEdgeId() {
-        return EdgeId;
+    public String getLaneId() {
+        return LaneId;
     }
 
-    public void setEdgeId(String edgeId) {
-        EdgeId = edgeId;
+    public void setLaneId(String laneId) {
+        LaneId = laneId;
     }
 
     public Float getLaneCO() {
@@ -79,14 +86,14 @@ public class EdgeEmissionValues {
         LanePMx = lanePMx;
     }
 
-    public EdgeEmissionValues() {
+    public LaneEmissions() {
 
     }
 
     @Override
     public String toString() {
-        return "EdgeEmissionValues{" +
-                "EdgeId='" + EdgeId + '\'' +
+        return "LaneEmissionsValues{" +
+                "LaneId='" + LaneId + '\'' +
                 ", LaneCO=" + LaneCO +
                 ", LaneCO2=" + LaneCO2 +
                 ", LaneHC=" + LaneHC +

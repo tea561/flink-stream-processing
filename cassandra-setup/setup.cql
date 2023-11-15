@@ -4,34 +4,32 @@ CREATE KEYSPACE IF NOT EXISTS bigdata
    'replication_factor' : 1
   };
 
-DROP TABLE IF EXISTS bigdata.edgeemission;
+DROP TABLE IF EXISTS bigdata.lane_emissions;
 
-CREATE TABLE bigdata.edgeemission (
-  dataTimeStep float,
-  edgeId text,
+CREATE TABLE bigdata.lane_emissions (
+  date TIMESTAMP PRIMARY KEY,
+  laneId text,
   laneCO float,
   laneCO2 float,          
   laneHC float,
   laneNOx float,
-  lanePMx float,
-  PRIMARY KEY(dataTimeStep, edgeId)
+  lanePMx float
 );
 
-CREATE TABLE bigdata.edges (
-  dataTimeStep float,
-  edgeId text,
-  edgeTravelTime float,
-  laneCO float,
-  laneCO2 float,          
-  laneHC float,
-  laneNOx float,
-  lanePMx float,
-  laneElectricity float,
+DROP TABLE IF EXISTS bigdata.vehicle_summary;
+CREATE TABLE bigdata.vehicle_summary (
+  date TIMESTAMP PRIMARY KEY,
+  vehicleId text,
+  vehicleCO float,
+  vehicleCO2 float,
+  vehicleHC float,
+  vehicleNOx float,
+  vehiclePMx float
+);
+
+DROP TABLE IF EXISTS bigdata.lane_vehicle_count;
+CREATE TABLE bigdata.lane_vehicle_count (
+  date TIMESTAMP PRIMARY KEY,
   laneId text,
-  laneMaxSpeed float,
-  laneMeanSpeed float,
-  laneNoise float,
-  laneOccupancy float,
-  laneVehicleCount int,
-  PRIMARY KEY(dataTimeStep, laneId)
+  vehicleCount int
 );

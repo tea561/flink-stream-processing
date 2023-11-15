@@ -3,8 +3,8 @@ package bigdata.pojo;
 import com.google.gson.annotations.SerializedName;
 
 public class VehicleInfo {
-    @SerializedName("data_timestep")
-    public Float DataTimeStep;
+    @SerializedName("timestep_time")
+    public Float TimeStep;
     @SerializedName("vehicle_CO")
     public Float VehicleCO;
     @SerializedName("vehicle_CO2")
