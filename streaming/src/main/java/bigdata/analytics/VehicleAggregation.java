@@ -11,11 +11,11 @@ import java.util.Date;
 public class VehicleAggregation  extends ProcessWindowFunction<VehicleInfo, VehicleSummary, String, TimeWindow> {
     @Override
     public void process(String key, ProcessWindowFunction<VehicleInfo, VehicleSummary, String, TimeWindow>.Context context, Iterable<VehicleInfo> iterable, Collector<VehicleSummary> collector) throws Exception {
-        float sumCO = 0F;
-        float sumCO2 = 0F;
-        float sumHC = 0F;
-        float sumNOx = 0F;
-        float sumPMx = 0F;
+        double sumCO = 0.0;
+        double sumCO2 = 0.0;
+        double sumHC = 0.0;
+        double sumNOx = 0.0;
+        double sumPMx = 0.0;
 
         for (VehicleInfo v : iterable) {
             sumCO += v.VehicleCO;

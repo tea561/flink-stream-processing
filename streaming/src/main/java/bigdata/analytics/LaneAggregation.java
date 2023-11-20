@@ -6,6 +6,8 @@ import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
+import java.util.Date;
+
 public class LaneAggregation {
 
     public static class AddEmissionValues
@@ -14,12 +16,14 @@ public class LaneAggregation {
         @Override
         public void process(String key, Context context, Iterable<VehicleInfo> emissions, Collector<LaneEmissions> out) throws Exception {
 
-            float sumCO = 0F;
-            float sumCO2 = 0F;
-            float sumHC = 0F;
-            float sumNOx = 0F;
-            float sumPMx = 0F;
-            //Integer sumVehicleCount = 0;
+            double sumCO = 0.0;
+            double sumCO2 = 0.0;
+            double sumHC =  0.0;
+            double sumNOx =  0.0;
+            double sumPMx =  0.0;
+            int count = 0;
+            double sumSpeed =  0.0;
+            double sumWaitingTime =  0.0;
 
             for (VehicleInfo e : emissions) {
                 sumCO += e.VehicleCO;
@@ -27,9 +31,15 @@ public class LaneAggregation {
                 sumHC += e.VehicleHC;
                 sumNOx += e.VehicleNOx;
                 sumPMx += e.VehiclePMx;
+                sumSpeed += e.VehicleSpeed;
+                sumWaitingTime += e.VehicleWaiting;
+                count++;
             }
 
-            out.collect(new LaneEmissions(key, sumCO, sumCO2, sumHC, sumNOx, sumPMx));
+            double avgSpeed = sumSpeed / count;
+            double avgWaitingTime = sumWaitingTime / count;
+
+            out.collect(new LaneEmissions(new Date(), key, sumCO, sumCO2, sumHC, sumNOx, sumPMx, avgSpeed, avgWaitingTime));
         }
     }
 }

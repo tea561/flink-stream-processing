@@ -13,29 +13,36 @@ public class LaneEmissions {
     public String LaneId;
     @Column(name = "laneCO")
 
-    public Float LaneCO;
+    public Double LaneCO;
     @Column(name = "laneCO2")
 
-    public Float LaneCO2;
+    public Double LaneCO2;
     @Column(name = "laneHC")
 
-    public Float LaneHC;
+    public Double LaneHC;
     @Column(name = "laneNOx")
 
-    public Float LaneNOx;
+    public Double LaneNOx;
     @Column(name = "lanePMx")
 
-    public Float LanePMx;
+    public Double LanePMx;
 
+    @Column(name = "avgSpeed")
+    public Double AvgSpeed;
 
-    public LaneEmissions(String laneId, Float laneCO, Float laneCO2, Float laneHC, Float laneNOx, Float lanePMx) {
+    @Column(name = "avgWaitingTime")
+    public Double AvgWaitingTime;
+
+    public LaneEmissions(java.util.Date date, String laneId, Double laneCO, Double laneCO2, Double laneHC, Double laneNOx, Double lanePMx, Double avgSpeed, Double avgWaitingTime) {
+        Date = date;
         LaneId = laneId;
         LaneCO = laneCO;
         LaneCO2 = laneCO2;
         LaneHC = laneHC;
         LaneNOx = laneNOx;
         LanePMx = lanePMx;
-        Date = new Date();
+        AvgSpeed = avgSpeed;
+        AvgWaitingTime = avgWaitingTime;
     }
 
     public String getLaneId() {
@@ -46,59 +53,85 @@ public class LaneEmissions {
         LaneId = laneId;
     }
 
-    public Float getLaneCO() {
+    public Double getLaneCO() {
         return LaneCO;
     }
 
-    public void setLaneCO(Float laneCO) {
+    public void setLaneCO(Double laneCO) {
         LaneCO = laneCO;
     }
 
-    public Float getLaneCO2() {
+    public Double getLaneCO2() {
         return LaneCO2;
     }
 
-    public void setLaneCO2(Float laneCO2) {
+    public void setLaneCO2(Double laneCO2) {
         LaneCO2 = laneCO2;
     }
 
-    public Float getLaneHC() {
+    public Double getLaneHC() {
         return LaneHC;
     }
 
-    public void setLaneHC(Float laneHC) {
+    public void setLaneHC(Double laneHC) {
         LaneHC = laneHC;
     }
 
-    public Float getLaneNOx() {
+    public Double getLaneNOx() {
         return LaneNOx;
     }
 
-    public void setLaneNOx(Float laneNOx) {
+    public void setLaneNOx(Double laneNOx) {
         LaneNOx = laneNOx;
     }
 
-    public Float getLanePMx() {
+    public Double getLanePMx() {
         return LanePMx;
     }
 
-    public void setLanePMx(Float lanePMx) {
+    public void setLanePMx(Double lanePMx) {
         LanePMx = lanePMx;
     }
 
     public LaneEmissions() {
 
     }
+    public java.util.Date getDate() {
+        return Date;
+    }
+
+    public void setDate(java.util.Date date) {
+        Date = date;
+    }
+
+    public Double getAvgSpeed() {
+        return AvgSpeed;
+    }
+
+    public void setAvgSpeed(Double avgSpeed) {
+        AvgSpeed = avgSpeed;
+    }
+
+    public Double getAvgWaitingTime() {
+        return AvgWaitingTime;
+    }
+
+    public void setAvgWaitingTime(Double avgWaitingTime) {
+        AvgWaitingTime = avgWaitingTime;
+    }
 
     @Override
     public String toString() {
-        return "LaneEmissionsValues{" +
-                "LaneId='" + LaneId + '\'' +
+        return "LaneEmissions{" +
+                "Date=" + Date +
+                ", LaneId='" + LaneId + '\'' +
                 ", LaneCO=" + LaneCO +
                 ", LaneCO2=" + LaneCO2 +
                 ", LaneHC=" + LaneHC +
                 ", LaneNOx=" + LaneNOx +
                 ", LanePMx=" + LanePMx +
+                ", AvgSpeed=" + AvgSpeed +
+                ", AvgWaitingTime=" + AvgWaitingTime +
                 '}';
     }
 }

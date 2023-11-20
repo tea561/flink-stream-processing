@@ -2,13 +2,12 @@ package bigdata.pojo;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.Table;
 import com.google.gson.annotations.SerializedName;
-import scala.Int;
 
 public class LaneInfo {
     @SerializedName("interval_begin")
-    public Float IntervalBegin;
+    public Double IntervalBegin;
     @SerializedName("interval_end")
-    public Float IntervalEnd;
+    public Double IntervalEnd;
     @SerializedName("interval_id")
     public String IntervalId;
     @SerializedName("edge_id")
@@ -16,7 +15,7 @@ public class LaneInfo {
     @SerializedName("lane_arrived")
     public Integer LaneArrived;
     @SerializedName("lane_density")
-    public Float LaneDensity;
+    public Double LaneDensity;
     @SerializedName("lane_departed")
     public Integer LaneDeparted;
     @SerializedName("lane_entered")
@@ -26,21 +25,21 @@ public class LaneInfo {
     @SerializedName("lane_left")
     public Integer LaneLeft;
     @SerializedName("lane_occupancy")
-    public Float LaneOccupancy;
+    public Double LaneOccupancy;
     @SerializedName("lane_overlapTraveltime")
-    public Float LaneOverlapTraveltime;
+    public Double LaneOverlapTraveltime;
     @SerializedName("lane_sampledSeconds")
-    public Float LaneSampledSeconds;
+    public Double LaneSampledSeconds;
     @SerializedName("lane_speed")
-    public Float LaneSpeed;
+    public Double LaneSpeed;
     @SerializedName("lane_speedRelative")
-    public Float LaneSpeedRelative;
+    public Double LaneSpeedRelative;
     @SerializedName("lane_timeLoss")
-    public Float LaneTimeLoss;
+    public Double LaneTimeLoss;
     @SerializedName("lane_traveltime")
-    public Float LaneTravelTime;
+    public Double LaneTravelTime;
     @SerializedName("lane_waitingTime")
-    public Float LaneWaitingTime;
+    public Double LaneWaitingTime;
 
 
 

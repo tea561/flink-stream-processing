@@ -6,7 +6,7 @@ import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
-import scala.Tuple2;
+import org.apache.flink.api.java.tuple.Tuple2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +24,7 @@ public class TopNEvents extends ProcessAllWindowFunction<VehicleSummary, Vehicle
         }
         vehicleList.sort((veh1, veh2) -> (int) (veh1.getVehiclePMx() - veh2.getVehiclePMx()));
 
-        List<VehicleSummary> topN = vehicleList.subList(0, 10);
+        List<VehicleSummary> topN = vehicleList.subList(0, 5);
         for (VehicleSummary v : topN) {
             collector.collect(v);
         }

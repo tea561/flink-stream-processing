@@ -14,24 +14,24 @@ public class VehicleSummary {
     public String VehicleId;
     @Column(name = "vehicleCO")
 
-    public Float VehicleCO;
+    public Double VehicleCO;
     @Column(name = "vehicleCO2")
 
-    public Float VehicleCO2;
+    public Double VehicleCO2;
     @Column(name = "vehicleHC")
 
-    public Float VehicleHC;
+    public Double VehicleHC;
     @Column(name = "vehicleNOx")
 
-    public Float VehicleNOx;
+    public Double VehicleNOx;
     @Column(name = "vehiclePMx")
 
-    public Float VehiclePMx;
+    public Double VehiclePMx;
 
     public VehicleSummary() {
     }
 
-    public VehicleSummary(java.util.Date date, String vehicleId, Float vehicleCO, Float vehicleCO2, Float vehicleHC, Float vehicleNOx, Float vehiclePMx) {
+    public VehicleSummary(java.util.Date date, String vehicleId, Double vehicleCO, Double vehicleCO2, Double vehicleHC, Double vehicleNOx, Double vehiclePMx) {
         Date = date;
         VehicleId = vehicleId;
         VehicleCO = vehicleCO;
@@ -57,43 +57,43 @@ public class VehicleSummary {
         VehicleId = vehicleId;
     }
 
-    public Float getVehicleCO() {
+    public Double getVehicleCO() {
         return VehicleCO;
     }
 
-    public void setVehicleCO(Float vehicleCO) {
+    public void setVehicleCO(Double vehicleCO) {
         VehicleCO = vehicleCO;
     }
 
-    public Float getVehicleCO2() {
+    public Double getVehicleCO2() {
         return VehicleCO2;
     }
 
-    public void setVehicleCO2(Float vehicleCO2) {
+    public void setVehicleCO2(Double vehicleCO2) {
         VehicleCO2 = vehicleCO2;
     }
 
-    public Float getVehicleHC() {
+    public Double getVehicleHC() {
         return VehicleHC;
     }
 
-    public void setVehicleHC(Float vehicleHC) {
+    public void setVehicleHC(Double vehicleHC) {
         VehicleHC = vehicleHC;
     }
 
-    public Float getVehicleNOx() {
+    public Double getVehicleNOx() {
         return VehicleNOx;
     }
 
-    public void setVehicleNOx(Float vehicleNOx) {
+    public void setVehicleNOx(Double vehicleNOx) {
         VehicleNOx = vehicleNOx;
     }
 
-    public Float getVehiclePMx() {
+    public Double getVehiclePMx() {
         return VehiclePMx;
     }
 
-    public void setVehiclePMx(Float vehiclePMx) {
+    public void setVehiclePMx(Double vehiclePMx) {
         VehiclePMx = vehiclePMx;
     }
 }
