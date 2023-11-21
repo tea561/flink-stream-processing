@@ -1,11 +1,14 @@
-package bigdata.analytics;
+package bigdata.analytics.vehicles;
 
 import bigdata.pojo.VehicleInfo;
 import org.apache.flink.streaming.api.functions.windowing.ProcessAllWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
-
-public class CorrelationCalc extends ProcessAllWindowFunction<VehicleInfo, Double, TimeWindow> {
+/**
+ * Calculates the correlation coefficient between vehicle speed and CO2 emissions
+ * for a given time window.
+ */
+public class CorrelationCalculator extends ProcessAllWindowFunction<VehicleInfo, Double, TimeWindow> {
     @Override
     public void process(ProcessAllWindowFunction<VehicleInfo, Double, TimeWindow>.Context context,
                         Iterable<VehicleInfo> iterable,

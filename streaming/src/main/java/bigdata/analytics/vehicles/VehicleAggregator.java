@@ -1,4 +1,4 @@
-package bigdata.analytics;
+package bigdata.analytics.vehicles;
 
 import bigdata.pojo.VehicleInfo;
 import bigdata.pojo.cassandra.VehicleSummary;
@@ -7,8 +7,11 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
 import java.util.Date;
-
-public class VehicleAggregation  extends ProcessWindowFunction<VehicleInfo, VehicleSummary, String, TimeWindow> {
+/**
+ * Aggregates vehicle information within a time window.
+ * The result is a VehicleSummary containing the sum of emissions for each type.
+ */
+public class VehicleAggregator extends ProcessWindowFunction<VehicleInfo, VehicleSummary, String, TimeWindow> {
     @Override
     public void process(String key, ProcessWindowFunction<VehicleInfo, VehicleSummary, String, TimeWindow>.Context context, Iterable<VehicleInfo> iterable, Collector<VehicleSummary> collector) throws Exception {
         double sumCO = 0.0;

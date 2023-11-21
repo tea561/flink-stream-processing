@@ -1,12 +1,11 @@
-package bigdata.analytics;
+package bigdata.analytics.lanes;
 
 import bigdata.pojo.VehicleInfo;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
-import org.apache.flink.streaming.api.functions.windowing.AggregateApplyWindowFunction;
 
 
-public class VehicleCountOnLane implements AggregateFunction<VehicleInfo, Tuple2<String, Integer>, Tuple2<String, Integer>> {
+public class CountVehiclesOnLane implements AggregateFunction<VehicleInfo, Tuple2<String, Integer>, Tuple2<String, Integer>> {
     @Override
     public Tuple2<String, Integer> createAccumulator() {
         return new Tuple2<>("", 0);

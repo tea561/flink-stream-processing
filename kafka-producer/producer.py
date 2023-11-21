@@ -3,6 +3,7 @@ import csv
 import json
 import sys 
 import time
+import datetime
 
 lane_file = 'belgrade_lanes.csv'
 emission_file = 'emissions.csv'
@@ -21,7 +22,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     csv_file = sys.argv[1]
-    producer = Producer({'bootstrap.servers': 'localhost:29092'})
+    producer = Producer({'bootstrap.servers': 'kafka:9092'})
     print('Kafka Producer has been initiated')
 
     if csv_file == lane_file:
@@ -45,7 +46,7 @@ if __name__ == '__main__':
                 vehicle_info['lane_speed'] = float(row['lane_speed']) if row['lane_speed'] != "" else 0.0
                 vehicle_info['lane_speedRelative'] = float(row['lane_speedRelative']) if row['lane_speedRelative'] != "" else 0.0
                 vehicle_info['lane_timeLoss'] = float(row['lane_timeLoss']) if row['lane_timeLoss'] != "" else 0.0
-                vehicle_info['lane_travelTime'] = float(row['lane_travelTime']) if row['lane_travelTime'] != "" else 0.0
+                vehicle_info['lane_traveltime'] = float(row['lane_traveltime']) if row['lane_traveltime'] != "" else 0.0
                 vehicle_info['lane_waitingTime'] = float(row['lane_waitingTime']) if row['lane_waitingTime'] != "" else 0.0
 
                 producer.produce(lanes_topic, key = 'belgrade', value = json.dumps(vehicle_info), callback = receipt)
@@ -74,6 +75,8 @@ if __name__ == '__main__':
                 emission_info['vehicle_speed'] = float(row['vehicle_speed']) if row['vehicle_speed'] != "" else 0.0
                 emission_info['vehicle_type'] = row['vehicle_type']
                 emission_info['vehicle_waiting'] = float(row['vehicle_waiting']) if row['vehicle_waiting'] != "" else 0.0
+                emission_info['vehicle_x'] = float(row['vehicle_x']) if row['vehicle_x'] != "" else 0.0
+                emission_info['vehicle_y'] = float(row['vehicle_y']) if row['vehicle_y'] != "" else 0.0
 
                 producer.produce(emission_topic, key = 'belgrade', value = json.dumps(emission_info), callback = receipt)
                 producer.flush()

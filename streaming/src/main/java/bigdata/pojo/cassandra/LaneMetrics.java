@@ -3,8 +3,8 @@ package bigdata.pojo.cassandra;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.Table;
 
-@Table(keyspace = "bigdata", name = "lane_summary")
-public class LaneSummary {
+@Table(keyspace = "bigdata", name = "lane_metrics")
+public class LaneMetrics {
     @Column(name = "laneId")
     public String LaneId;
     @Column(name = "laneLength")
@@ -14,14 +14,14 @@ public class LaneSummary {
     @Column(name = "avgNumOfVehicles")
     public Double AvgNumOfVehicles;
 
-    public LaneSummary(String laneId, Double laneLength, Double avgTrafficVolume, Double avgNumOfVehicles) {
+    public LaneMetrics(String laneId, Double laneLength, Double avgTrafficVolume, Double avgNumOfVehicles) {
         LaneId = laneId;
         LaneLength = laneLength;
         AvgTrafficVolume = avgTrafficVolume;
         AvgNumOfVehicles = avgNumOfVehicles;
     }
 
-    public LaneSummary() {
+    public LaneMetrics() {
     }
 
     public String getLaneId() {

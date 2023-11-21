@@ -75,9 +75,16 @@ services:
       - cassandra
     command: bash -c "sleep 30 && echo Creating Keyspace && cqlsh cassandra -f setup.cql && sleep infinity"
     restart: unless-stopped
+  producer:
+    build: ./kafka-producer
+    image: producer
+    restart: unless-stopped
+    volumes:
+      - appdata:/var/www
 networks:
   default:
     external:
       name: bigdata
 volumes:
   cassandra_data:
+  appdata:

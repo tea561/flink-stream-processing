@@ -1,4 +1,4 @@
-package bigdata.analytics;
+package bigdata.analytics.suburbs;
 
 import bigdata.pojo.VehicleInfo;
 import bigdata.pojo.geojson.GeoJSONObject;
@@ -36,7 +36,9 @@ public class CitySuburbsMap extends RichFlatMapFunction<VehicleInfo, Tuple2<Stri
 
     @Override
     public void flatMap(VehicleInfo vehicleInfo, Collector<Tuple2<String, VehicleInfo>> collector) throws Exception {
-        collector.collect(new Tuple2<>(findSuburb(vehicleInfo.VehicleX, vehicleInfo.VehicleY), vehicleInfo));
+        String name = findSuburb(vehicleInfo.VehicleX, vehicleInfo.VehicleY);
+        Tuple2<String, VehicleInfo> veh = new Tuple2<>(name, vehicleInfo);
+        collector.collect(veh);
     }
 
     public String findSuburb(double posX, double posY) {

@@ -4,8 +4,8 @@ import com.datastax.driver.mapping.annotations.Table;
 
 import java.util.Date;
 
-@Table(keyspace = "bigdata", name = "lane_emissions")
-public class LaneEmissions {
+@Table(keyspace = "bigdata", name = "lane_aggregation")
+public class LaneAggregationData {
 
     @Column(name = "date")
     public Date Date;
@@ -33,7 +33,7 @@ public class LaneEmissions {
     @Column(name = "avgWaitingTime")
     public Double AvgWaitingTime;
 
-    public LaneEmissions(java.util.Date date, String laneId, Double laneCO, Double laneCO2, Double laneHC, Double laneNOx, Double lanePMx, Double avgSpeed, Double avgWaitingTime) {
+    public LaneAggregationData(java.util.Date date, String laneId, Double laneCO, Double laneCO2, Double laneHC, Double laneNOx, Double lanePMx, Double avgSpeed, Double avgWaitingTime) {
         Date = date;
         LaneId = laneId;
         LaneCO = laneCO;
@@ -93,7 +93,7 @@ public class LaneEmissions {
         LanePMx = lanePMx;
     }
 
-    public LaneEmissions() {
+    public LaneAggregationData() {
 
     }
     public java.util.Date getDate() {
